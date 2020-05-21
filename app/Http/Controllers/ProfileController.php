@@ -13,10 +13,7 @@ class ProfileController extends Controller
         return $this->middleware('auth');
     }
     public function index(User $user){
-        //yaha $user yo user xa ni name this name matches with web.php ma agi {} ma lekheko user
-        // so tye vaera laravel le aafai user khojxa k ko user ho vanera
-        // yo function ma pass gareko variable name ani route le pathaune variable name same vaera
-        //so we can simply pass user view ma
+        $this->authorize('update',$user->profile);
         return view('profile.index')->withUser($user);
     }
     public function edit(User $user){

@@ -11,7 +11,7 @@
 <label for ="image">Profile Image </label>
 {{-- mistakeeeee --}}
 {{-- paila yo thyo --}}
-{{-- yo tala ko line mistake thyo eh eh lol--}}
+{{-- yo tala ko line mistake thyo eh eh lol yeahhh aayo ni image see that? leave everythigne else naam aayo ni image ko yupppp--}}
 {{-- <input type="file" image="image" image="image"> --}}
 
 <input type="file" name="image" id="image">
