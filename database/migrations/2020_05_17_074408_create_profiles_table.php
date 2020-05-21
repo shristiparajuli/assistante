@@ -18,6 +18,7 @@ class CreateProfilesTable extends Migration
             $table->unsignedBigInteger('user_id');
             $table->string('address')->nullable();
             $table->string('phone')->nullable();
+            $table->string('image')->nullable();
             $table->timestamps();
         });
     }
