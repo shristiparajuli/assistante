@@ -1,8 +1,12 @@
 @extends('layouts.admin')
 @section('content')
 <div class="container" style="width:100%;height:100vh;display:flex; justify-content:center;align-items:center">
-    {!! Form::open(['route'=>'services.store','method'=>'POST']) !!}
-
+    {!! Form::open(['route'=>'services.store','method'=>'POST','files'=>true]) !!}
+    @csrf
+{{-- lol files true na vai submit garera yeto vako raixa
+    image file ho ni ta so we ned to explicitly say form ma file ni jadai xa vanera
+    i thing thats the proble,
+    --}}
     <label for="name">Service Name</label>
 <input type="text" name="name" id="name" class="form-control">
 

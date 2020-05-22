@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Service;
 
 class PagesController extends Controller
 {
@@ -19,6 +20,11 @@ class PagesController extends Controller
     }
 
     public function services(){
-        return view('general.services');
+        $services = Service::latest()->get();
+        return view('general.services')->withServices($services);
+    }
+
+    public function singleServices(Service $service){
+        return view('general.single_service')->withService($service);
     }
 }

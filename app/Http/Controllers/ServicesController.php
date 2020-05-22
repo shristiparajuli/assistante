@@ -1,8 +1,9 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Services;
+use App\Service;
 use Illuminate\Http\Request;
+use Storage;
 use Intervention\Image\Facades\Image;
 
 class ServicesController extends Controller
@@ -14,7 +15,8 @@ class ServicesController extends Controller
      */
     public function index()
     {
-        //
+        $services=Service::orderBy('created_at','desc')->get();
+        return view('admin.services.index')->withServices($services);
     }
 
     /**
@@ -37,7 +39,8 @@ class ServicesController extends Controller
     {
 
         $this->validate($request,
-        ['name'=>'required',
+        [
+        'name'=>'required',
         'description'=>'required',
         'image'=>'image'
         ]);
@@ -55,7 +58,7 @@ class ServicesController extends Controller
             $service->image = $imageName;
         }
         $service->save();
-        return redirect()->route('admin.index');
+        return redirect()->route('services.index');
     }
 
     /**
@@ -77,7 +80,8 @@ class ServicesController extends Controller
      */
     public function edit($id)
     {
-        //
+        $service=Service::findOrFail($id);
+        return view ('admin.services.edit')->withService($service);
     }
 
     /**
@@ -89,7 +93,29 @@ class ServicesController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $this->validate($request,
+        [
+        'name'=>'required',
+        'description'=>'required',
+        'image'=>'image'
+        ]);
+        $service = Service::findOrFail($id);
+        $service->name = $request->input('name');
+        $service->description = $request->input('description');
+
+        // dd($request);
+      if($request->hasFile('image'))
+        {
+            $image = $request->file('image');
+            $imageName=time() . '.' . $image->getClientOriginalExtension();
+            $location = public_path('storage/uploads/services/'.$imageName);
+            Image::make($image)->fit(1024,1024)->save($location);
+            $old = $service->image;
+            Storage::delete($old);
+            $service->image = $imageName;
+        }
+        $service->save();
+        return redirect()->route('services.index');
     }
 
     /**
@@ -100,6 +126,9 @@ class ServicesController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $service = Service::findOrFail($id);
+        Storage::delete($service->image);
+        $service->delete();
+        return redirect()->route('services.index');
     }
 }
