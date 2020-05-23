@@ -42,11 +42,13 @@ class ServicesController extends Controller
         [
         'name'=>'required',
         'description'=>'required',
-        'image'=>'image'
+        'image'=>'image',
+        'price'=>'required|integer'
         ]);
         $service = new Service;
         $service->name = $request->name;
         $service->description = $request->description;
+        $service->price = $request->price;
 
         // dd($request);
       if($request->hasFile('image'))
@@ -97,12 +99,13 @@ class ServicesController extends Controller
         [
         'name'=>'required',
         'description'=>'required',
-        'image'=>'image'
+        'image'=>'image',
+        'price'=> 'required|integer'
         ]);
         $service = Service::findOrFail($id);
         $service->name = $request->input('name');
         $service->description = $request->input('description');
-
+        $service->price = $request->input('price');
         // dd($request);
       if($request->hasFile('image'))
         {

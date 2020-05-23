@@ -25,5 +25,7 @@ Route::get('/services', 'PagesController@services')->name('pages.services');
 Route::get('services/{service}', 'PagesController@singleServices')->name('services.show');
 Route::get('profile/{user}', 'ProfileController@index')->name('profile.index');
 Route::get('profile/{user}/edit', 'ProfileController@edit')->name('profile.edit');
-// :v
+
 Route::patch('/profile/{user}', 'ProfileController@update')->name('profile.update');
+Route::post('book/{service}', 'OrdersController@store')->name('book.store');
+

@@ -32,7 +32,11 @@
 								<li><a href="#">Carpet Cleaning<i class="far fa-angle-right"></i></a></li>
 							</ul>
 						</div>
-					</div>
+                    </div>
+                    <h2 class="title text-align-right">Nrs. {{$service->price}} /-</h2>
+                    <a href="#" class="main-btn">Book Now</a>
+
+
 				</div>
 				<div class="col-lg-8 order-1 order-lg-2">
 					<div class="service-details">
@@ -48,5 +52,5 @@
 			</div>
 		</div>
     </section>
-    {{-- web.php ma jau --}}
+
 @endsection

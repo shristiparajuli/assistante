@@ -35,3 +35,4 @@
 <link rel="stylesheet" href="{{asset('assets/css/default.css')}}" />
 <!--====== Style css ======-->
 <link rel="stylesheet" href="{{asset('assets/css/style.css')}}" />
+@yield('stylesheets')

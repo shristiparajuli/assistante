@@ -14,6 +14,9 @@
 <label for="description">Service Description</label>
 <textarea id="description" name="description" rows="4" cols="50" class="form-control"> {{$service->description}} </textarea>
 
+<label for="price">Price Of Service</label>
+<input type="text" name="price" id="price" class="form-control" value="{{$service->price}}">
+
 <label for="image">Service Image</label>
 <input type="file" name="image" id="image">
 
