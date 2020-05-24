@@ -8,16 +8,16 @@
     image file ho ni ta so we ned to explicitly say form ma file ni jadai xa vanera
     i thing thats the proble,
     --}}
-    <label for="name">Service Name</label>
+    <label class="text-white " for="name">Service Name</label>
 <input type="text" name="name" id="name" class="form-control" value="{{$service->name}}">
 
-<label for="description">Service Description</label>
+<label class="text-white " for="description">Service Description</label>
 <textarea id="description" name="description" rows="4" cols="50" class="form-control"> {{$service->description}} </textarea>
 
-<label for="price">Price Of Service</label>
+<label class="text-white " for="price">Price Of Service</label>
 <input type="text" name="price" id="price" class="form-control" value="{{$service->price}}">
 
-<label for="image">Service Image</label>
+<label class="text-white " for="image">Service Image</label>
 <input type="file" name="image" id="image">
 
 <input type="submit" value="Submit" class="btn btn-primary">

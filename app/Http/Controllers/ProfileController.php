@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\User;
+use App\Order;
 use Intervention\Image\Facades\Image;
 class ProfileController extends Controller
 {
@@ -41,6 +42,12 @@ class ProfileController extends Controller
         }
         $user->profile->save();
         return redirect()->route('profile.index',$user->id);
+
+    }
+    public function cart(User $user){
+        $this->authorize('update',$user->profile);
+        $orders=Order::where(['user_id'=>$user->id])->get();
+        return view('profile.cart')->withOrders($orders);
 
     }
 }

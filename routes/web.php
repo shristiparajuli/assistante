@@ -25,7 +25,12 @@ Route::get('/services', 'PagesController@services')->name('pages.services');
 Route::get('services/{service}', 'PagesController@singleServices')->name('services.show');
 Route::get('profile/{user}', 'ProfileController@index')->name('profile.index');
 Route::get('profile/{user}/edit', 'ProfileController@edit')->name('profile.edit');
-
+Route::delete('/admin/orders/{order}','AdminController@deleteOrder')->name('orders.delete');
 Route::patch('/profile/{user}', 'ProfileController@update')->name('profile.update');
 Route::post('book/{service}', 'OrdersController@store')->name('book.store');
+Route::get('/admin/orders','AdminController@orders')->name('orders.index');
+Route::get('/cart/{user}','ProfileController@cart')->name('cart.index');
+
+
+
 

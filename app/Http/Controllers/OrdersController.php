@@ -19,10 +19,13 @@ class OrdersController extends Controller
            $order->user_id= $curr_user;
            $order->service_id=$service->id;
            $order->save();
-           return "Service Saved";
+           session()->flash('success','Item Added');
+           return redirect()->route('cart.index',$curr_user);
+
         }
         else{
-            return "Already Ordered";
+            session()->flash('success','Item Already in Cart');
+            return redirect()->route('cart.index',$curr_user);
         }
     }
 }

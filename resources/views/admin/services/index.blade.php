@@ -10,8 +10,9 @@
 @endsection
 @section('content')
 <div class="container flex-column" style="width:100%;height:100vh;display:flex; justify-content:center;align-items:center">
-    <div class="jumbotron">
-        <h1> All Services </h1>
+    <div class="row d-flex align-items-center p-5 w-100" style="justify-content:space-around">
+
+        <h1 class="text-light"> All Services </h1>
         <a href="{{route('services.create')}}" class="btn btn-primary"> Create a New Service </a>
     </div>
     <div class="table-container">
@@ -36,7 +37,7 @@
                     </td>
                     <td> {{$service->name}} </td>
                     <td>
-                        {{substr(strip_tags($service->description),0,30)}}}
+                        {{substr(strip_tags($service->description),0,30)}}
                         {{strlen(strip_tags($service->description))>30?"...":""}}
                     </td>
                     <td> {{$service->price}}</td>

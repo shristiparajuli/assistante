@@ -1,0 +1,45 @@
+.cart-body{
+    background-size:cover;
+    background-position:center;
+}
+
+  .cart-container{
+      position:absolute;
+      width:60rem;
+    top:50%;
+    left:50%;
+    transform:translate(-50%,-50%);
+  }
+
+  .cart-items{
+      max-height:300px;
+      overflow-y:scroll;
+
+  }
+
+ .font-weight-bold{
+     font-weight: bold;
+ }
+
+  button {
+    background: none;
+    width: 25px;
+    height: 25px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    border: 0;
+    font-size: 1rem;
+    transition: 150ms ease-in-out;
+  }
+
+  button:hover {
+    color: rgb(240, 112, 112);
+    background: #2a2a2a;
+    cursor: pointer;
+  }
+
+  .text-black{
+      color:black;
+  }

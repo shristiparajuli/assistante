@@ -9,6 +9,7 @@
         <img src="/storage/uploads/profile/{{$user->profile->image}}" style="height:100%;width:100%;object-fit:cover;border-radius:50%;box-shadow:0 0 6px 0 grey;"alt="">
         @endif
     </div>
+    <a href="{{route('cart.index',$user->id)}}" class="btn btn-primary"> My Service Orders</a>
     <ul>
     <li>User Name:{{$user->name}}</li>
         <li>User Email:{{$user->email}}</li>
