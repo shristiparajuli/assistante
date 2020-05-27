@@ -76,8 +76,13 @@
 
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link" href="blog.html">Login
-                                            <i class="fal fa-angle-down"></i></a>
+                                        @guest
+                                        <a class="nav-link" href="#">Profile
+                                        </a>
+                                        @else
+                                        <a class="nav-link" href="{{route('profile.index',auth()->user()->id)}}">Profile
+                                        </a>
+                                        @endguest
                                         {{--        <ul class="sub-menu">
                                         <li>
                                                 <a href="blog.html">Login</a>

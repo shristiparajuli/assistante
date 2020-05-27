@@ -15,7 +15,7 @@
         <img src="logo.png" alt="" />
       </div>
       <div class="profile-name">
-        <h2>User 1</h2>
+      <h2><a href="{{route('profile.index',auth()->user()->id)}}">{{auth()->user()->name}}</a></h2>
       </div>
     </div>
     <div class="cart-items">
@@ -30,9 +30,10 @@
           </tr>
         </thead>
         <tbody>
+            <?php $count = 1;?>
             @foreach ($orders as $order)
             <tr>
-                <td style="vertical-align:middle"><h6>{{$order->id}}</h6></td>
+                <td style="vertical-align:middle"><h6>{{$count}}</h6></td>
                 <td>
                     <div class="img" style="width:100px;height:100px;border-radius:50%">
                         <img src="/storage/uploads/services/{{$order->service->image}}" style="height:100%;width:100%;object-fit:cover;border-radius:50%;box-shadow:0 0 6px 0 grey;"alt="">
@@ -41,12 +42,13 @@
                 <td style="vertical-align:middle"><h6>{{$order->service->name}}</h6></td>
                 <td style="vertical-align:middle"><h6>{{$order->service->price}}</h6></td>
                 <td style="vertical-align:middle">
-                    {!! Form::open(['route'=>['orders.delete',$order->id],'method'=>'post']) !!}
+                    {!! Form::open(['route'=>['cart.delete',$order->id],'method'=>'post']) !!}
                         @method('DELETE')
                         <button><i class="fas fa-trash-alt"></i></button>
                     {!! Form::close() !!}
                 </td>
               </tr>
+              <?php $count++ ?>
             @endforeach
 
 

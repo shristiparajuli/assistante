@@ -15,7 +15,9 @@ class ProfileController extends Controller
     }
     public function index(User $user){
         $this->authorize('update',$user->profile);
-        return view('profile.index')->withUser($user);
+        $orders=Order::where(['user_id'=>$user->id])->get();
+        return view('profile.index')->withUser($user)->withOrders($orders);
+
     }
     public function edit(User $user){
         $this->authorize('update',$user->profile);
@@ -46,8 +48,13 @@ class ProfileController extends Controller
     }
     public function cart(User $user){
         $this->authorize('update',$user->profile);
-        $orders=Order::where(['user_id'=>$user->id])->get();
+
+        $orders=Order::where(['user_id'=>$user->id])->latest()->get();
         return view('profile.cart')->withOrders($orders);
 
+    }
+    public function deleteItem(Order $order){
+        $order->delete();
+        return redirect()->back();
     }
 }

@@ -21,6 +21,7 @@
 	<script src="{{asset('assets/js/waypoints.min.js')}}"></script>
 	<script src="{{asset('assets/js/ajax-contact.js')}}"></script>
 	<script src="{{asset('assets/js/main.js')}}"></script>
+    <script src="https://kit.fontawesome.com/7b32ce4356.js"crossorigin="anonymous"></script>
 
 
 @yield('scripts')

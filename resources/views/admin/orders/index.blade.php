@@ -5,7 +5,7 @@
     <h3> There are No Orders Pending. </h3>
     @else
     <div class="table-container">
-
+        {!!$orders->links()!!}
         <table class="table">
             <thead>
                 <th> #</th>
