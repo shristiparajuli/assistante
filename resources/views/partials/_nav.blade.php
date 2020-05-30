@@ -8,7 +8,7 @@
                             <ul>
                                 <li>
                                     <span>If your any query:</span><br />
-                                    <span>info@bclean.com</span>
+                                    <span>shristiparajuli29@gmail.com</span>
                                     <i class="flaticon-e-mail-envelope"></i>
                                 </li>
                                 <li>
@@ -35,7 +35,7 @@
                 <div class="col-lg-12">
                     <div class="navigation">
                         <nav class="navbar navbar-expand-lg navbar-light ">
-                            <a class="navbar-brand" href="index.html"><img src="assets/images/logo-2.png"
+                        <a class="navbar-brand" href="index.html"><img src="{{asset('assets/images/logo/logo-transparent-white.png')}}"
                                     alt="Queak" /></a>
 
                             <!-- logo -->
@@ -56,7 +56,7 @@
 
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link" href="about.html"> Shop Now
+                                    <a class="nav-link" href="{{route('product.index')}}"> Shop Now
                                         </a>
 
                                     </li>
@@ -69,10 +69,10 @@
                                         <a class="nav-link" href="{{route('pages.services')}}">Services
                                         </a>
 
-                                    </li>
+                                    {{-- </li>
                                     <li class="nav-item">
                                         <a class="nav-link" href="project.html">Project
-                                        </a>
+                                        </a> --}}
 
                                     </li>
                                     <li class="nav-item">

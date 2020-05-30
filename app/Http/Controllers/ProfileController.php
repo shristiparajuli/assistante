@@ -5,7 +5,9 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\User;
 use App\Order;
+use App\Product;
 use Intervention\Image\Facades\Image;
+use Illuminate\Support\Facades\Input;
 class ProfileController extends Controller
 {
 
@@ -56,5 +58,82 @@ class ProfileController extends Controller
     public function deleteItem(Order $order){
         $order->delete();
         return redirect()->back();
+    }
+    public function productCart(User $user){
+        return view('profile.productCart');
+
+    }
+    public function addItemToCart(Request $request, $id){
+        $product = Product::find($id);
+        $quantity = 1;
+        // dd($request->input('quantity'));
+        if($request->input('quantity')){
+            $quantity = $request->input('quantity');
+        }
+
+        // dd($quantity);
+        $cart = session()->get('cart');
+        if(!$cart){
+            $cart = [
+                $id =>[
+                        "id"=>$product->id,
+                        "name"=>$product->name,
+                        "description"=>$product->description,
+                        "price"=>$product->price,
+                        "image"=>$product->image,
+                        "quantity"=>1
+                    ]
+                ];
+            session()->put('cart',$cart);
+            return redirect()->route('productCart.index',auth()->user()->id);
+
+
+        }
+        $cart[$id]= [
+            "id"=>$product->id,
+            "name"=>$product->name,
+            "description"=>$product->description,
+            "price"=>$product->price,
+            "image"=>$product->image,
+            "quantity"=>$quantity
+        ];
+        session()->put('cart',$cart);
+        return redirect()->route('productCart.index',auth()->user()->id);
+
+    }
+    public function removeItemFromCart(Request $request){
+        if($request->id){
+            $cart=session()->get('cart');
+            if(isset($cart[$request->id])){
+                unset($cart[$request->id]);
+                session()->put('cart',$cart);
+            }
+        }
+        return redirect()->route('productCart.index',auth()->user()->id);
+
+    }
+    public function incQuantity($id){
+        $product =Product::find($id);
+        $cart= session()->get('cart');
+        $cart[$id]['quantity']++;
+        session()->put('cart',$cart);
+        return redirect()->route('productCart.index',auth()->user()->id);
+
+
+    }
+    public function decQuantity($id){
+        $product =Product::find($id);
+        $cart= session()->get('cart');
+
+        if($cart[$id]['quantity']>1){
+            $cart[$id]['quantity']--;
+            session()->put('cart',$cart);
+        }
+        return redirect()->route('productCart.index',auth()->user()->id);
+
+
+    }
+    public function bill(){
+        return view('profile.bill');
     }
 }

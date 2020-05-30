@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Service;
+use App\Product;
 
 class PagesController extends Controller
 {
@@ -26,5 +27,15 @@ class PagesController extends Controller
 
     public function singleServices(Service $service){
         return view('general.single_service')->withService($service);
+    }
+
+    public function showProduct(Product $product){
+        return view('general.shop.show')->withProduct($product);
+    }
+
+    public function allProducts(){
+        $products= Product::latest()->paginate(2);
+        return view('general.shop.index')->withProducts($products);
+
     }
 }

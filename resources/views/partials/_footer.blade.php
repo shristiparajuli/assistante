@@ -11,12 +11,12 @@
                     <div class="col-lg-8 d-none d-lg-block">
                         <div class="footer-menu">
                             <ul>
-                                <li><a href="#">Home</a></li>
-                                <li><a href="#">Pages</a></li>
-                                <li><a href="#">Services</a></li>
+                                <li><a href="{{route('pages.welcome')}}">Home</a></li>
+                                <li><a href="{{route('product.index')}}">Shop Now</a></li>
+                                <li><a href="{{route('pages.about')}}">About</a></li>
+                                <li><a href="{{route('pages.services')}}">Services</a></li>
                                 <li><a href="#">Project</a></li>
-                                <li><a href="#">News</a></li>
-                                <li><a href="#">Contact</a></li>
+                                <li><a href="{{route('profile.index',auth()->user()->id)}}">Profile</a></li>
                             </ul>
                         </div>
                     </div>
@@ -71,7 +71,7 @@
                     </div>
                     <div class="col-lg-3 col-md-6">
                         <div class="widget footer-newsletters-widget">
-                            <h4 class="title">Newsletters</h4>
+                            |<h4 class="title">Newsletters</h4>
                             <p>Male living him morning dry fowe image sea replenish.</p>
                             <form action="#">
                                 <div class="input-box">

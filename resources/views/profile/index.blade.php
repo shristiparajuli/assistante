@@ -1,7 +1,6 @@
 @extends('layouts.app')
 @section('content')
 
-{{-- ill clean the code hai ekxin --}}
 <section class="single-product-wrapper" style="position: absolute;top:50%;left:50%;transform:translate(-50%,-50%)">
     <div class="container" style="margin-top:70px;">
         <div class="product-main-slider mb-55">
@@ -31,11 +30,11 @@
                             <form>
                                 <div class="quantity-area d-flex align-items-center">
                                     <label for="quantity">Cart: </label>
-                                    <a href="{{route('cart.index',$user->id)}}" class="ml-5 main-btn main-btn-2 add-to-cart d-flex align-items-center p-3">
+                                    <a href="{{route('productCart.index',$user->id)}}" class="ml-5 main-btn main-btn-2 add-to-cart d-flex align-items-center p-3">
                                         <i class="fas fa-shopping-cart"></i>
 
 
-                                        <h6 class="stock-availity ml-2 text-white">{{$orders->count()}}</h6>
+                                        {{-- <h6 class="stock-availity ml-2 text-white">{{$orders->count()}}</h6> --}}
                                     </a>
 
                                 </div>
@@ -57,8 +56,10 @@
                                 </li>
                             </ul>
                         </div>
-                        <div class="product-btn mt-45">
-                            <a href="{{route('profile.edit',$user->id)}}" class="main-btn main-btn-2 add-to-cart">Edit My Profile</a>
+                        <div class="product-btn mt-45 d-flex">
+                            <a href="{{route('cart.index',$user->id)}}" class="main-btn main-btn-2 add-to-cart"> My Orders: {{$orders->count()}}</a>
+
+                            <a href="{{route('profile.edit',$user->id)}}" class="main-btn main-btn-2 add-to-cart ml-4">Edit My Profile</a>
                         </div>
                     </div>
                 </div>
